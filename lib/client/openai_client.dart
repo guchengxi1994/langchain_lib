@@ -10,12 +10,18 @@ class OpenaiClient extends Client {
   final String baseUrl;
   final String? apiKey;
   final String? modelName;
+  double temperature;
 
-  OpenaiClient({required this.baseUrl, this.apiKey, this.modelName}) {
+  OpenaiClient(
+      {required this.baseUrl,
+      this.apiKey,
+      this.modelName,
+      this.temperature = 0.7}) {
     model = ChatOpenAI(
         apiKey: apiKey,
         baseUrl: baseUrl,
-        defaultOptions: ChatOpenAIOptions(model: modelName));
+        defaultOptions:
+            ChatOpenAIOptions(model: modelName, temperature: temperature));
   }
 
   late final ChatOpenAI model;
