@@ -5,6 +5,7 @@ import 'package:langchain_lib/models/template_item.dart';
 import 'package:langchain_openai/langchain_openai.dart';
 
 import 'load_env.dart';
+import 'load_string.dart';
 
 class OpenaiClient extends Client {
   final String baseUrl;
@@ -42,6 +43,10 @@ class OpenaiClient extends Client {
 
   static void fromEnv(String path) {
     models = loadEnv(path);
+  }
+
+  static void fromString(String s) {
+    models = loadString(s);
   }
 
   static Client? getByTag(String tag) {
